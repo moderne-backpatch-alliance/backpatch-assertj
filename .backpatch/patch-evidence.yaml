@@ -1,0 +1,21 @@
+schema: osera-patch-evidence/0.1.0
+producer: moderne
+release: 3.22.0.1-backpatch-00001
+baseline: v3.22.0+backpatch.baseline
+fixes:
+  - cve: CVE-2026-24400
+    upstream_fix_url: https://github.com/assertj/assertj/commit/77081dc5eb107141df80f95bd0149b468e451341
+    advisory_url: https://nvd.nist.gov/vuln/detail/CVE-2026-24400
+    patch_commit_url: https://github.com/moderne-backpatch-alliance/backpatch-assertj/commit/cd9c63f
+    basis: adapted
+    artifacts:
+      - org.assertj:assertj-core
+    note: New in this release; ported onto 3.22.0; fixed at 3.22.0.1-backpatch-00001 (backpatch-assertj@cd9c63f).
+tests:
+  commit: cd9c63feda8f0ff689b948500813e42cdec357a5
+  command: mvn -B -T1 -Dossindex.skip=true -Dmaven.test.failure.ignore=true clean test
+  runtime: openjdk version 11.0.20 2023-07-18 LTS, Apache Maven 3.9.16
+  report: assertj-core-3.22.0.1-backpatch-00001-tests.zip
+  report_sha256: fd1c642debfdac76ed1d961548403282512ac18bbecf1dee997714664c2caacb
+  result: pass
+  note: 17660 tests at the patch commit, 18 of them skipped by the suite, 0 failed, 0 errors.
